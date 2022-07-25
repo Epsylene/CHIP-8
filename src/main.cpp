@@ -5,7 +5,7 @@
 #include "Platform.hpp"
 #include "Chip8.hpp"
 
-int main(int argc, char* argv[])
+int main(int argc, char** argv)
 {
     if(argc != 4)
     {

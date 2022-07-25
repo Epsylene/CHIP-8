@@ -3,7 +3,6 @@ project(CHIP_8)
 
 set(CMAKE_CXX_STANDARD 20)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/sdl2)
 find_package(SDL2 REQUIRED)
 
 add_executable(CHIP_8 src/main.cpp src/Chip8.hpp src/Chip8.cpp src/Platform.cpp src/Platform.hpp)

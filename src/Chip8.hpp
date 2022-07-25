@@ -3,11 +3,15 @@
 
 #include <cstdint>
 #include <random>
-#include <string_view>
+#include <unordered_map>
 #include <functional>
 
 const unsigned VIDEO_WIDTH = 64;
 const unsigned VIDEO_HEIGHT = 32;
+const unsigned KEY_COUNT = 16;
+const unsigned MEMORY_SIZE = 4096;
+const unsigned REGISTER_COUNT = 16;
+const unsigned STACK_LEVELS = 16;
 
 // The CHIP-8 is a virtual machine developped in the 1970s to
 // ease game programming on early computers. What we are writing
@@ -46,10 +50,10 @@ class Chip8
         //  - 16 input keys, mapped from 1-F to 1234QWERASDFZXCV;
         //  - a 64x32 monochrome display memory, with each pixel either
         //  on or off.
-        uint32_t video[64 * 32];
-        uint16_t index, pc, opcode, stack[16];
+        uint32_t video[VIDEO_WIDTH * VIDEO_HEIGHT] {};
+        uint16_t index, pc, opcode, stack[STACK_LEVELS] {};
         uint8_t sp, delayTimer, soundTimer;
-        uint8_t registers[16], memory[4096], keypad[16];
+        uint8_t registers[REGISTER_COUNT] {}, memory[MEMORY_SIZE] {}, keypad[KEY_COUNT] {};
 
         std::default_random_engine randGen;
         std::uniform_int_distribution<uint8_t> randByte;
@@ -59,7 +63,7 @@ class Chip8
 
         Chip8();
 
-        void load_ROM(std::string_view filename);
+        void load_ROM(const char* filename);
         void cycle();
 
         void op_00E0(); // CLS
