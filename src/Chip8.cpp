@@ -8,8 +8,6 @@
 
 const unsigned START_ADRESS = 0x200;
 const unsigned FONT_START_ADRESS = 0x50;
-const unsigned VIDEO_WIDTH = 64;
-const unsigned VIDEO_HEIGHT = 32;
 
 Chip8::Chip8(): randGen(std::chrono::system_clock::now().time_since_epoch().count())
 {

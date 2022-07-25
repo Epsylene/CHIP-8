@@ -6,6 +6,9 @@
 #include <string_view>
 #include <functional>
 
+const unsigned VIDEO_WIDTH = 64;
+const unsigned VIDEO_HEIGHT = 32;
+
 // The CHIP-8 is a virtual machine developped in the 1970s to
 // ease game programming on early computers. What we are writing
 // here is then actually an interpreter; however, understanding
